@@ -2,7 +2,7 @@
 // webpack.config.js
 
 module.exports = {
-  entry: ["./src/index.js", "./src/index.css"],
+  entry: ["@babel/polyfill", "./src/index.js", "./src/index.css"],
   output: {
     path: __dirname,
     publicPath: "/",
