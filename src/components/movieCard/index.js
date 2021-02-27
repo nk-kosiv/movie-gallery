@@ -14,7 +14,7 @@ const movieCard = ({
   year,
   description,
   id,
-  addListItems,
+  toggleListItems,
 }) => {
   const genresContent = genres.map(
     (el) => `
@@ -49,14 +49,16 @@ const movieCard = ({
     </div>
   `;
 
-  const divElement = document.createElement("div");
-  divElement.className = styles.main_card;
-  divElement.id = `card_${id}`;
-  divElement.innerHTML = cardContent;
+  const movieCardElement = document.createElement("div");
+  movieCardElement.className = styles.main_card;
+  movieCardElement.id = `card_${id}`;
+  movieCardElement.innerHTML = cardContent;
+
   // Inserting el in gallery_block
-  galleryBlock.appendChild(divElement);
+  galleryBlock.appendChild(movieCardElement);
   document
     .getElementById(`card_content_btn_${id}`)
-    .addEventListener("click", () => addListItems({ id, name }));
+    .addEventListener("click", () => toggleListItems(id));
 };
+
 export default movieCard;

@@ -18,14 +18,35 @@ async function asyncFetchData() {
 
 const listBlock = document.getElementById("favorite_block");
 
-const removeListItems = () => {};
-const addListItems = ({ id, name }) => {
-  const newItem = listItem({ id, name });
-  listBlock.appendChild(newItem);
+let movieList = [];
+
+const favoriteList = new Set();
+
+const toggleListItems = (id) => {
+  listBlock.innerHTML = "";
+
+  if (favoriteList.has(id)) {
+    favoriteList.delete(id);
+  } else {
+    favoriteList.add(id);
+  }
+
+  const newFavoriteList = Array.from(favoriteList);
+
+  newFavoriteList.forEach((id) => {
+    const { name } = movieList.find((el) => el.id === id);
+    const newItem = listItem({ id, name });
+    listBlock.appendChild(newItem);
+    document
+      .getElementById(`item_${id}`)
+      .addEventListener("click", () => toggleListItems(id));
+  });
 };
 
 async function convertDataInUi() {
   const data = await asyncFetchData();
+
+  movieList = data;
 
   data.forEach(({ img, name, genres, year, description, id }) =>
     movieCard({
@@ -35,7 +56,7 @@ async function convertDataInUi() {
       year,
       description,
       id,
-      addListItems,
+      toggleListItems,
     })
   );
 }
