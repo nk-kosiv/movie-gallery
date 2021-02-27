@@ -41,3 +41,19 @@
 .favorite_list_heading {
   padding: 25px 0;
 }
+.modal_dialog {
+  position: absolute;
+  width: 100vw;
+  height: 100vh;
+  background-color: rgba(0, 0, 0, 0.4);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 999;
+  display: none;
+}
+.modal_dialog_paper {
+  width: 500px;
+  height: 400px;
+  background-color: #fff;
+}

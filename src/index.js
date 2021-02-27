@@ -21,7 +21,7 @@ const listBlock = document.getElementById("favorite_block");
 let movieList = [];
 
 const favoriteList = new Set();
-
+///////////////
 const toggleListItems = (id) => {
   listBlock.innerHTML = "";
 
@@ -42,6 +42,12 @@ const toggleListItems = (id) => {
       .addEventListener("click", () => toggleListItems(id));
   });
 };
+/////////////////
+const dialog = document.getElementById("dialog");
+
+const openModal = (id) => {
+  dialog.style.display = "flex";
+};
 
 async function convertDataInUi() {
   const data = await asyncFetchData();
@@ -57,8 +63,13 @@ async function convertDataInUi() {
       description,
       id,
       toggleListItems,
+      openModal,
     })
   );
 }
 
 window.addEventListener("load", convertDataInUi);
+
+const closeButton = document.getElementById("close_dialog");
+const closeModal = () => (dialog.style.display = "none");
+closeButton.addEventListener("click", closeModal);

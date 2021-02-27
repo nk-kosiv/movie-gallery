@@ -15,6 +15,7 @@ const movieCard = ({
   description,
   id,
   toggleListItems,
+  openModal,
 }) => {
   const genresContent = genres.map(
     (el) => `
@@ -26,7 +27,7 @@ const movieCard = ({
 
   const cardContent = `
     <div class="${styles.movie_card_container}">
-      <div class="${styles.movie_card_image}">
+      <div id="${`card_image_${id}`}" class="${styles.movie_card_image}">
         <img src="${img}" alt="${name}" />
       </div>
       <button id="${`card_content_btn_${id}`}" class="${
@@ -51,7 +52,6 @@ const movieCard = ({
 
   const movieCardElement = document.createElement("div");
   movieCardElement.className = styles.main_card;
-  movieCardElement.id = `card_${id}`;
   movieCardElement.innerHTML = cardContent;
 
   // Inserting el in gallery_block
@@ -59,6 +59,9 @@ const movieCard = ({
   document
     .getElementById(`card_content_btn_${id}`)
     .addEventListener("click", () => toggleListItems(id));
+  document
+    .getElementById(`card_image_${id}`)
+    .addEventListener("click", () => openModal(id));
 };
 
 export default movieCard;
