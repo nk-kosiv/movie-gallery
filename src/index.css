@@ -1,0 +1,30 @@
+* {
+  padding: 0;
+  margin: 0;
+  box-sizing: border-box;
+}
+.container {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+.movie_gallery {
+  flex-grow: 1;
+  height: 100vh;
+  background-color: #aeaeae;
+  overflow: scroll;
+}
+.main_heading {
+  padding: 25px 0;
+  text-align: center;
+}
+.favorite_list {
+  width: 25%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  height: 100vh;
+}
+.favorite_list_heading {
+  padding: 25px 0;
+}
