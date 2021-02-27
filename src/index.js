@@ -1,3 +1,5 @@
+import movieCard from "./components/movieCard";
+
 async function asyncFetchData() {
   try {
     const requestBody = `https://my-json-server.typicode.com/moviedb-tech/movies/list/`;
@@ -12,5 +14,13 @@ async function asyncFetchData() {
     console.error(e);
   }
 }
+const addListItem = (id) => {};
 
-asyncFetchData();
+async function convertDataInUi() {
+  const data = await asyncFetchData();
+  return data.forEach(({ img, name, genres, year, description, id }) => {
+    return movieCard({ img, name, genres, year, description });
+  });
+}
+
+window.addEventListener("load", convertDataInUi);
