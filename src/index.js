@@ -1,4 +1,5 @@
 import movieCard from "./components/movieCard";
+import listItem from "./components/listItem";
 
 async function asyncFetchData() {
   try {
@@ -14,13 +15,29 @@ async function asyncFetchData() {
     console.error(e);
   }
 }
-const addListItem = (id) => {};
+
+const listBlock = document.getElementById("favorite_block");
+
+const removeListItems = () => {};
+const addListItems = ({ id, name }) => {
+  const newItem = listItem({ id, name });
+  listBlock.appendChild(newItem);
+};
 
 async function convertDataInUi() {
   const data = await asyncFetchData();
-  return data.forEach(({ img, name, genres, year, description, id }) => {
-    return movieCard({ img, name, genres, year, description });
-  });
+
+  data.forEach(({ img, name, genres, year, description, id }) =>
+    movieCard({
+      img,
+      name,
+      genres,
+      year,
+      description,
+      id,
+      addListItems,
+    })
+  );
 }
 
 window.addEventListener("load", convertDataInUi);

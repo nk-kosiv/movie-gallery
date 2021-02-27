@@ -2,12 +2,20 @@
 import styles from "./styles.module.css";
 
 // Dom elements
-const gelleryBlock = document.getElementById("gallery_block");
+const galleryBlock = document.getElementById("gallery_block");
 
 const filledStar = "&#9733;";
 const emptyStar = "&#9734;";
 
-const movieCard = ({ img, name, genres, year, description }) => {
+const movieCard = ({
+  img,
+  name,
+  genres,
+  year,
+  description,
+  id,
+  addListItems,
+}) => {
   const genresContent = genres.map(
     (el) => `
     <div class="${styles.movie_card_genres}">
@@ -21,7 +29,9 @@ const movieCard = ({ img, name, genres, year, description }) => {
       <div class="${styles.movie_card_image}">
         <img src="${img}" alt="${name}" />
       </div>
-      <button class="${styles.movie_card_favorite_btn}">
+      <button id="${`card_content_btn_${id}`}" class="${
+    styles.movie_card_favorite_btn
+  }">
         <span>${emptyStar}</span>
       </button>
       <div class="${styles.movie_card_right}">
@@ -41,8 +51,12 @@ const movieCard = ({ img, name, genres, year, description }) => {
 
   const divElement = document.createElement("div");
   divElement.className = styles.main_card;
+  divElement.id = `card_${id}`;
   divElement.innerHTML = cardContent;
   // Inserting el in gallery_block
-  return gelleryBlock.appendChild(divElement);
+  galleryBlock.appendChild(divElement);
+  document
+    .getElementById(`card_content_btn_${id}`)
+    .addEventListener("click", () => addListItems({ id, name }));
 };
 export default movieCard;
