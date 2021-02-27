@@ -5,25 +5,10 @@ import { toggleListItems } from "../../index";
 const dialog = document.getElementById("dialog");
 
 const handleOpenModal = (movieList) => (id) => {
-  const {
-    img,
-    name,
-    genres,
-    year,
-    description,
-    director,
-    starring,
-  } = movieList.find((el) => el.id === id);
+  const movie = movieList.find((el) => el.id === id);
 
   dialogContent({
-    img,
-    name,
-    genres,
-    year,
-    description,
-    director,
-    starring,
-    id,
+    ...movie,
     toggleListItems,
   });
   dialog.style.display = "flex";
@@ -32,14 +17,9 @@ const handleOpenModal = (movieList) => (id) => {
 export const renderMovieGallery = (data) => {
   const openModal = handleOpenModal(data);
 
-  data.forEach(({ img, name, genres, year, description, id }) =>
+  data.forEach((movie) =>
     movieCard({
-      img,
-      name,
-      genres,
-      year,
-      description,
-      id,
+      ...movie,
       toggleListItems,
       openModal,
     })
