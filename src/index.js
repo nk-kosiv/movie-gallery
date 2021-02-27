@@ -6,7 +6,6 @@ import {
 import { renderMovieGallery } from "./components/movieGallery";
 import renderFavoriteList from "./components/favoriteList";
 
-const dialog = document.getElementById("dialog");
 let movieList = [];
 
 export const toggleListItems = (id) => {
@@ -24,6 +23,7 @@ async function initApp() {
   renderMovieGallery(movieList);
 
   // Attaching event listeners
+  const dialog = document.getElementById("dialog");
   const closeButton = document.getElementById("close_dialog");
   const closeModal = () => (dialog.style.display = "none");
   closeButton.addEventListener("click", closeModal);
