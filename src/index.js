@@ -1,5 +1,6 @@
 import movieCard from "./components/movieCard";
 import listItem from "./components/listItem";
+import dialogContent from "./components/dialogContent";
 
 async function asyncFetchData() {
   try {
@@ -19,9 +20,8 @@ async function asyncFetchData() {
 const listBlock = document.getElementById("favorite_block");
 
 let movieList = [];
+let favoriteList = new Set();
 
-const favoriteList = new Set();
-///////////////
 const toggleListItems = (id) => {
   listBlock.innerHTML = "";
 
@@ -32,7 +32,6 @@ const toggleListItems = (id) => {
   }
 
   const newFavoriteList = Array.from(favoriteList);
-
   newFavoriteList.forEach((id) => {
     const { name } = movieList.find((el) => el.id === id);
     const newItem = listItem({ id, name });
@@ -41,11 +40,35 @@ const toggleListItems = (id) => {
       .getElementById(`item_${id}`)
       .addEventListener("click", () => toggleListItems(id));
   });
+
+  const favoriteListStringify = JSON.stringify(newFavoriteList);
+  localStorage.setItem("favoriteList", favoriteListStringify);
 };
 /////////////////
 const dialog = document.getElementById("dialog");
 
 const openModal = (id) => {
+  const {
+    img,
+    name,
+    genres,
+    year,
+    description,
+    director,
+    starring,
+  } = movieList.find((el) => el.id === id);
+
+  dialogContent({
+    img,
+    name,
+    genres,
+    year,
+    description,
+    director,
+    starring,
+    id,
+    toggleListItems,
+  });
   dialog.style.display = "flex";
 };
 
@@ -54,6 +77,19 @@ async function convertDataInUi() {
 
   movieList = data;
 
+  if (localStorage.getItem("favoriteList") !== null) {
+    const favoriteListArray = JSON.parse(localStorage.getItem("favoriteList"));
+    favoriteList = new Set(favoriteListArray);
+    const newFavoriteList = Array.from(favoriteList);
+    newFavoriteList.forEach((id) => {
+      const { name } = movieList.find((el) => el.id === id);
+      const newItem = listItem({ id, name });
+      listBlock.appendChild(newItem);
+      document
+        .getElementById(`item_${id}`)
+        .addEventListener("click", () => toggleListItems(id));
+    });
+  }
   data.forEach(({ img, name, genres, year, description, id }) =>
     movieCard({
       img,
