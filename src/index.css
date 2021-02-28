@@ -116,3 +116,11 @@ body {
 .close_dialog_btn:hover {
   box-shadow: 1px 1px 3px rgba(0, 0, 0, 0.2), -1px -1px 3px rgba(0, 0, 0, 0.2);
 }
+.filledStar span {
+  display: none;
+}
+.filledStar::after {
+  display: inline-block;
+  content: "★";
+  color: #ffd700;
+}

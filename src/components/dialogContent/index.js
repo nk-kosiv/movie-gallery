@@ -1,9 +1,9 @@
 // Imports
+import { toggleFavoriteListItem } from "../favoriteList/index";
 import styles from "./styles.module.css";
 
 const dialogContentElement = document.getElementById("dialog_content");
 
-const filledStar = "&#9733;";
 const emptyStar = "&#9734;";
 
 const DialogContent = ({
@@ -15,7 +15,6 @@ const DialogContent = ({
   director,
   starring,
   id,
-  toggleListItems,
 }) => {
   const genresContent = genres.map(
     (el) => `
@@ -36,7 +35,7 @@ const DialogContent = ({
             id="${`dialog_content_btn_${id}`}" 
             class="${styles.dialog_favorite_btn}"
           >
-            <span>${emptyStar}</span>
+            <span class="${`toggle_star_${id}`}"><span>${emptyStar}</span></span>
           </button>
           <span>Year: ${year}</span>
         </div>
@@ -71,9 +70,7 @@ const DialogContent = ({
   // Inserting el in gallery_block
   dialogContentElement.innerHTML = "";
   dialogContentElement.appendChild(movieDialogElement);
-  document
-    .getElementById(`dialog_content_btn_${id}`)
-    .addEventListener("click", () => toggleListItems(id));
+  toggleFavoriteListItem(`dialog_content_btn_${id}`, id);
 };
 
 export default DialogContent;

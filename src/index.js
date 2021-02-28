@@ -4,6 +4,7 @@ import {
   refreshLocalStorege,
 } from "./utils/refreshLocalStorege";
 import { renderMovieGallery } from "./components/movieGallery";
+import { toggleSelectedItemMovieStyle } from "./components/favoriteList";
 import renderFavoriteList from "./components/favoriteList";
 
 let movieList = [];
@@ -11,6 +12,7 @@ let movieList = [];
 export const toggleListItems = (id) => {
   const newFavoriteList = refreshLocalStorege(id);
   renderFavoriteList(newFavoriteList, movieList);
+  toggleSelectedItemMovieStyle(newFavoriteList, movieList);
 };
 
 async function initApp() {
@@ -20,7 +22,8 @@ async function initApp() {
 
   // Rendering the UI
   renderFavoriteList(favoriteListFromSrorege, movieList);
-  renderMovieGallery(movieList);
+  renderMovieGallery(movieList, favoriteListFromSrorege);
+  toggleSelectedItemMovieStyle(favoriteListFromSrorege, movieList);
 
   // Attaching event listeners
   const dialog = document.getElementById("dialog");
