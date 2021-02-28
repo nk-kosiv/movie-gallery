@@ -31,6 +31,7 @@ body {
   top: 0;
   background-color: #fff;
   z-index: 99;
+  position: relative;
 }
 
 .favorite_list {
@@ -123,4 +124,33 @@ body {
   display: inline-block;
   content: "★";
   color: #ffd700;
+}
+.view_selection_container {
+  position: absolute;
+  right: 30px;
+  top: 50%;
+  transform: translateY(-50%);
+  -webkit-transform: translateY(-50%);
+  -moz-transform: translateY(-50%);
+  -ms-transform: translateY(-50%);
+  -o-transform: translateY(-50%);
+  display: flex;
+  align-items: center;
+}
+.view_selection_text {
+  margin-right: 10px;
+}
+.view_selection_block {
+  display: flex;
+  font-size: 30px;
+  border: 1px solid rgba(0, 0, 0, 0.1);
+}
+.view_selection_block span {
+  display: inline-block;
+  cursor: pointer;
+  padding: 0 6px;
+}
+.view_selection_block span:hover {
+  cursor: pointer;
+  background-color: rgba(0, 0, 0, 0.1);
 }
