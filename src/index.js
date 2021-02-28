@@ -22,9 +22,13 @@ const changeView = () => {
 
   gridViewButton.addEventListener("click", () => {
     gallery.classList.add("gallery_grid_view");
+    gridViewButton.classList.add("active_selected_view");
+    rowViewButton.classList.remove("active_selected_view");
   });
   rowViewButton.addEventListener("click", () => {
     gallery.classList.remove("gallery_grid_view");
+    gridViewButton.classList.remove("active_selected_view");
+    rowViewButton.classList.add("active_selected_view");
   });
 };
 

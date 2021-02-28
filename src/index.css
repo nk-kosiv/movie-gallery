@@ -248,6 +248,9 @@ body {
   cursor: pointer;
   padding: 0 6px;
 }
+.active_selected_view {
+  background-color: rgba(0, 0, 0, 0.1);
+}
 .view_selection_block span:hover {
   cursor: pointer;
   background-color: rgba(0, 0, 0, 0.1);
