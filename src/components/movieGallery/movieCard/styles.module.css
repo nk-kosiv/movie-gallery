@@ -6,6 +6,9 @@
   overflow: hidden;
   margin: 0 20px;
 }
+.movie_card_image:hover {
+  cursor: pointer;
+}
 .movie_card_image img {
   height: 100%;
   width: 100%;
