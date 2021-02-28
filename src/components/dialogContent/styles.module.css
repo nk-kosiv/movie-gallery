@@ -1,0 +1,87 @@
+.dialog_image {
+  min-width: 300px;
+  min-height: 300px;
+  max-width: 300px;
+  max-height: 300px;
+  overflow: hidden;
+}
+.dialog_image img {
+  height: 100%;
+  width: 100%;
+  object-fit: cover;
+}
+.dialog_favorite_btn {
+  font-size: 30px;
+  right: 10px;
+  top: 10px;
+  min-width: 46px;
+  min-height: 46px;
+  max-height: 46px;
+  max-width: 46px;
+  background: none !important;
+  border: none;
+  padding: 0 !important;
+  cursor: pointer;
+  outline: none;
+  outline: 0;
+  border-radius: 50%;
+  -webkit-border-radius: 50%;
+  -moz-border-radius: 50%;
+  -ms-border-radius: 50%;
+  -o-border-radius: 50%;
+  transition: all 0.2s;
+  -webkit-transition: all 0.2s;
+  -moz-transition: all 0.2s;
+  -ms-transition: all 0.2s;
+  -o-transition: all 0.2s;
+}
+.dialog_favorite_btn:hover {
+  box-shadow: 1px 1px 3px rgba(0, 0, 0, 0.2), -1px -1px 3px rgba(0, 0, 0, 0.2);
+}
+.dialog_left {
+  padding-right: 30px;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  height: 100%;
+}
+.dialog_year_and_btn {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 10px 0;
+}
+.dialog_genres_container {
+  display: flex;
+  align-items: flex-end;
+  justify-content: space-between;
+}
+.dialog_genres {
+  padding: 6px 10px;
+  border-radius: 20px;
+  -webkit-border-radius: 20px;
+  -moz-border-radius: 20px;
+  -ms-border-radius: 20px;
+  -o-border-radius: 20px;
+  border: 1px solid #aeaeaa;
+
+  background-color: rgb(255, 236, 184);
+}
+.dialog_right {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+}
+.dialog_name_block {
+  font-size: 35px;
+  padding-bottom: 25px;
+}
+.dialog_description {
+  font-size: 1.2rem;
+}
+.dialog_right_bottom {
+  padding-bottom: 30px;
+}
+.dialog_starring {
+  padding-top: 15px;
+}

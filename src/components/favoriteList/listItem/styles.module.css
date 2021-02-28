@@ -1,0 +1,51 @@
+.listItemContainer {
+  width: 100%;
+}
+.favorite_list_item {
+  width: 100%;
+  padding: 5px 0;
+}
+.favorite_list_item li {
+  width: 100%;
+  list-style-type: circle;
+}
+.favorite_list_item_block {
+  display: flex;
+  width: 100%;
+  align-items: center;
+  justify-content: space-between;
+}
+.favorite_list_item_block span {
+  margin: 5px 0;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  width: 100%;
+}
+.favorite_list_item_btn {
+  font-size: 20px;
+  min-width: 30px;
+  min-height: 30px;
+  max-height: 30px;
+  max-width: 30px;
+  margin-right: 5px;
+  background: none !important;
+  border: none;
+  padding: 0 !important;
+  cursor: pointer;
+  outline: none;
+  outline: 0;
+  border-radius: 50%;
+  -webkit-border-radius: 50%;
+  -moz-border-radius: 50%;
+  -ms-border-radius: 50%;
+  -o-border-radius: 50%;
+  transition: all 0.2s;
+  -webkit-transition: all 0.2s;
+  -moz-transition: all 0.2s;
+  -ms-transition: all 0.2s;
+  -o-transition: all 0.2s;
+}
+.favorite_list_item_btn:hover {
+  box-shadow: 1px 1px 3px rgba(0, 0, 0, 0.2), -1px -1px 3px rgba(0, 0, 0, 0.2);
+}

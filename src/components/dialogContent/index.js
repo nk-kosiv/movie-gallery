@@ -24,47 +24,48 @@ const DialogContent = ({
     </div>
   `
   );
-  const starringContent = starring.map(
-    (el) => `
-    <div class="${styles.dialog_starring}">
-      <span>${el}</span>
-    </div>
-  `
-  );
+  const starringContent = starring.map((el) => `<span>${el}, </span>`);
 
   const dialogContent = `
-    <div class="${styles.dialog_container}">
-      <div id="${`dialog_image_${id}`}" class="${styles.dialog_image}">
-        <img src="${img}" alt="${name}" />
-      </div>
-      <button id="${`dialog_content_btn_${id}`}" class="${
-    styles.dialog_favorite_btn
-  }">
-        <span>${emptyStar}</span>
-      </button>
-      <div class="${styles.dialog_right}">
-        <div class="${styles.dialog_name_block}">
-          <span>${name}</span>
-          <span>Year: ${year}</span>
+      <div class="${styles.dialog_left}">
+        <div id="${`dialog_image_${id}`}" class="${styles.dialog_image}">
+          <img src="${img}" alt="${name}" />
         </div>
-        <div class="${styles.dialog_description}">
-          <p>${description}</p>
+        <div class="${styles.dialog_year_and_btn}">
+          <button 
+            id="${`dialog_content_btn_${id}`}" 
+            class="${styles.dialog_favorite_btn}"
+          >
+            <span>${emptyStar}</span>
+          </button>
+          <span>Year: ${year}</span>
         </div>
         <div class="${styles.dialog_genres_container}">
           ${genresContent.join("")}
         </div>
-        <div>
-          ${starringContent.join("")}
-        </div>
-        <div>
-         <span> ${director}</span>
-        </div>
       </div>
-    </div>
+      <div class="${styles.dialog_right}">
+        <div class="${styles.dialog_right_top}">
+          <div class="${styles.dialog_name_block}">
+            <h3>${name}</h3>          
+          </div>
+          <div class="${styles.dialog_description}">
+            <p>${description}</p>
+          </div>  
+        </div>
+        <div class="${styles.dialog_right_bottom}">
+          <div>
+            <span>Director: ${director}</span>
+          </div> 
+          <div class="${styles.dialog_starring}">
+            Starring: ${starringContent.join("")}
+          </div> 
+        </div>       
+      </div>    
   `;
 
   const movieDialogElement = document.createElement("div");
-  movieDialogElement.className = styles.main_dialog;
+  movieDialogElement.className = "dialog_content_containre";
   movieDialogElement.innerHTML = dialogContent;
 
   // Inserting el in gallery_block
