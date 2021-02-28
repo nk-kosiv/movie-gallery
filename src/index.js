@@ -15,6 +15,19 @@ export const toggleListItems = (id) => {
   toggleSelectedItemMovieStyle(newFavoriteList, movieList);
 };
 
+const changeView = () => {
+  const rowViewButton = document.getElementById("select_row_view");
+  const gridViewButton = document.getElementById("select_grid_view");
+  const gallery = document.getElementById("gallery_block");
+
+  gridViewButton.addEventListener("click", () => {
+    gallery.classList.add("gallery_grid_view");
+  });
+  rowViewButton.addEventListener("click", () => {
+    gallery.classList.remove("gallery_grid_view");
+  });
+};
+
 async function initApp() {
   // Collecting data
   movieList = await getMovieData();
@@ -24,6 +37,7 @@ async function initApp() {
   renderFavoriteList(favoriteListFromSrorege, movieList);
   renderMovieGallery(movieList, favoriteListFromSrorege);
   toggleSelectedItemMovieStyle(favoriteListFromSrorege, movieList);
+  changeView();
 
   // Attaching event listeners
   const dialog = document.getElementById("dialog");

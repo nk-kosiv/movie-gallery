@@ -17,17 +17,15 @@ const movieCard = ({ img, name, genres, year, description, id, openModal }) => {
   );
 
   const cardContent = `
-    <div class="${styles.movie_card_container}">
+    <div class="movie_card_container">
       <div id="${`card_image_${id}`}" class="${styles.movie_card_image}">
         <img src="${img}" alt="${name}" />
       </div>
-      <button id="${`card_content_btn_${id}`}" class="${
-    styles.movie_card_favorite_btn
-  }">
+      <button id="${`card_content_btn_${id}`}" class="movie_card_favorite_btn">
         <span class="${`toggle_star_${id}`}"><span>${emptyStar}</span></span>
       </button>
-      <div class="${styles.movie_card_right}">
-        <div class="${styles.movie_card_name_block}">
+      <div class="movie_card_right">
+        <div class="movie_card_name_block">
           <span>${name}</span>
           <span>Year: ${year}</span>
         </div>
@@ -42,7 +40,7 @@ const movieCard = ({ img, name, genres, year, description, id, openModal }) => {
   `;
 
   const movieCardElement = document.createElement("div");
-  movieCardElement.className = styles.main_card;
+  movieCardElement.className = "movie_card_main_wrapper";
   movieCardElement.innerHTML = cardContent;
 
   // Inserting el in gallery_block
